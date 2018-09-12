@@ -1,8 +1,10 @@
 <div class="courses-show">
+<%= link_to '<< Back', courses_path %>
+
   <h1><%= @course.name %></h1>
   <sub><%= @course.hours %> hours</sub>
 
   <p><%= @course.description %></p>
 
-  <%= link_to "Edit #{@course.name}", edit_course_path %>
+  <%= link_to 'Add A Cohort', new_course_cohort_path(@course) %>
 </div>
