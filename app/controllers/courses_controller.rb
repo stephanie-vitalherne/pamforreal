@@ -34,7 +34,14 @@ class CoursesController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    p "Terminating #{course.name} from PS 113 Admin Panel"
+    course.destroy
+    respond_to do |format|
+      format.js
+      format.html { p 'html response'; redirect_to courses_path }
+    end
+  end
 
   private
 

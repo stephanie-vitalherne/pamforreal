@@ -8,12 +8,25 @@
     <thead>
       <th>Course Name</th>
       <th>Course Hours</th>
+      <% if current_user.admin == 1 %>
+      <th>Actions</th>
+      <% else %>
+      <th>Action</th>
+      <% end %>
     </thead>
     <tbody>
       <% @courses.each do |c| %>
       <tr>
         <td><%= link_to "#{c.name}", course_path(c) %></td>
         <td><%= c.hours %></td>
+        <% if current_user.admin == 1 %>
+        <td>
+          <%= link_to 'Edit', edit_course_path(c) %>
+          <%= link_to 'Terminate',  course_terminate_path(c), method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: 'terminate' %>
+        </td>
+        <% else %>
+        <td><%= link_to 'Edit', edit_course_path(c) %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

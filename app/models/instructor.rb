@@ -10,6 +10,10 @@ class Instructor < ApplicationRecord
     first_name + ' ' + last_name
   end
 
+  def is_admin?
+    admin == true
+  end
+
   def generate_school_id
     self.school_id = SecureRandom.hex(4).upcase
   end

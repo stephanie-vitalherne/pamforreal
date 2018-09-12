@@ -19,7 +19,7 @@
     <li>Birthday: <%= @instructor.birthday.strftime("%b. %e, %Y") %></li>
   </ul>
 
-  <% if @instructor.admin == 1 %>
+  <% if current_user.is_admin? %>
     <%= link_to 'Edit Instructor', edit_instructor_path %>
   <% else %>
   <% end %>
