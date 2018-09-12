@@ -1,0 +1,8 @@
+<div class="courses-show">
+  <h1><%= @course.name %></h1>
+  <sub><%= @course.hours %> hours</sub>
+
+  <p><%= @course.description %></p>
+
+  <%= link_to "Edit #{@course.name}", edit_course_path %>
+</div>

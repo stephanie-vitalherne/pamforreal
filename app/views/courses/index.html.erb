@@ -1,0 +1,22 @@
+<div class="courses-index">
+  <% if current_user == nil %>
+    <h2>You must be logged in.</h2>
+  <% else %>
+  <h1>All Courses</h1>
+
+  <table>
+    <thead>
+      <th>Course Name</th>
+      <th>Course Hours</th>
+    </thead>
+    <tbody>
+      <% @courses.each do |c| %>
+      <tr>
+        <td><%= link_to "#{c.name}", course_path(c) %></td>
+        <td><%= c.hours %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<div class='instructors-show'>
+<% if current_user == nil %>
+  <h2>You must be logged in.</h2>
+<% else %>
+
+  <% if !flash[:notice].blank? %>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <h1><%= @instructor.full_name %></h1>
+  <h3>Employee #<%= @instructor.school_id %></h3>
+  <p><%= link_to 'Add A Course', new_course_path %></p>
+  <ul>
+    <li>Email: <%= @instructor.email %></li>
+    <li>Education: <%= @instructor.education %></li>
+    <li>Salary: <%= @instructor.salary %></li>
+    <li>Birthday: <%= @instructor.birthday.strftime("%b. %e, %Y") %></li>
+  </ul>
+
+  <% if @instructor.admin == 1 %>
+    <%= link_to 'Edit Instructor', edit_instructor_path %>
+  <% else %>
+  <% end %>
+<% end %>
+</div>

@@ -1,0 +1,12 @@
+<ul>
+  <li><%= link_to "Home", root_path %></li>
+  <% if logged_in? %>
+    <li><%= link_to "#{current_user.email}", instructor_path(current_user) %></li>
+    <li><%= link_to 'All Instructors', instructors_path %></li>
+    <li><%= link_to 'All Courses', courses_path %></li>
+    <li><%= link_to 'Log out', logout_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to 'Register', register_path %></li>
+    <li><%= link_to 'Log In', login_path %></li>
+  <% end %>
+</ul>

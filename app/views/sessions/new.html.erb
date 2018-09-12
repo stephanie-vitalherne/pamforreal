@@ -1,0 +1,17 @@
+<div class="sessions-new">
+  <% if !flash[:notice].blank? %>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <h1>Log In</h1>
+
+
+  <%= form_for(:session, url: login_path) do |f| %>
+    <%= f.email_field :email, placeholder: 'Email', required: true %><br>
+    <%= f.password_field :password, placeholder: 'Password', required: true %><br>
+
+    <%= f.submit 'Log In' %>
+    <sub>New Instructor? <%= link_to 'Create an account', '#' %></sub>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+<div class="instructors-index">
+  <% if current_user == nil %>
+    <h2>You must be logged in.</h2>
+  <% else %>
+  <table>
+    <thead>
+      <th>Full Name</th>
+      <th>Employee ID</th>
+    </thead>
+    <tbody>
+      <%@instructors.each do |f| %>
+        <tr>
+          <td><%= link_to "#{f.full_name}", instructor_path(f.id) %></td>
+          <td><%= f.school_id%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% end %>
+</div>

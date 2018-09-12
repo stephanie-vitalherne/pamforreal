@@ -1,0 +1,23 @@
+<%= form_for(@instructor) do |f| %>
+<% if @instructor.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
+    <ul>
+      <% @instructor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%= f.text_field :first_name, placeholder: 'First Name' %> <br>
+  <%= f.text_field :last_name, placeholder: 'Last Name' %> <br>
+  <%= f.email_field :email, placeholder: 'Email' %> <br>
+  <%= f.date_select :birthday, :order => [:month, :day, :year], start_year: (Time.now.year - 150), end_year: (Time.now.year - 14), required: true %><br>
+  <%= f.select :salary, ['$20,000-$30,000', '$40,000-$50,000', '$60,000-$70,000', '$100,000-$110,000'], { prompt: 'Select Salary' } %> <br>
+  <%= f.select :education, ['High School', 'College', 'Masters', 'PhD'], { prompt: 'Select Education' } %> <br>
+  <%= f.password_field :password, placeholder: 'Enter A Password' %> <br>
+  <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %> <br>
+
+  <%= f.submit %>
+<% end %>
