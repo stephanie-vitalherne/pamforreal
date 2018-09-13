@@ -5,11 +5,11 @@ class InstructorsController < ApplicationController
   end
 
   def show
-    @page_title = "#{@instructor.full_name} | PS 113 Admin Panel"
+    @page_title = "#{@instructor.full_name} | PS 118 Admin Panel"
   end
 
   def new
-    @page_title = 'New Instructor | PS 113 Admin Panel'
+    @page_title = 'New Instructor | PS 118 Admin Panel'
     @instructor = Instructor.new
   end
 
@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
   end
 
   def edit
-    @page_title = "Editing #{@instructor.full_name} | PS 113 Admin Panel"
+    @page_title = "Editing #{@instructor.full_name} | PS 118 Admin Panel"
   end
 
   def update

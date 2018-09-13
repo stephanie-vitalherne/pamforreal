@@ -1,10 +1,24 @@
 <div class="courses-show">
-<%= link_to '<< Back', courses_path %>
+  <% if current_user == nil %>
+    <h2>You must be logged in.</h2>
+  <% else %>
+
+  <%= link_to '<< Back', courses_path %>
 
   <h1><%= @course.name %></h1>
   <sub><%= @course.hours %> hours</sub>
 
   <p><%= @course.description %></p>
 
+  <div class='cohort-list'>
+    <h4>Available Cohorts</h4>
+    <ol>
+      <% @course.cohorts.each do |c| %>
+        <li><%= link_to "#{c.name}", course_cohort_path(@course.id, c) %></li>
+      <% end %>
+    </ol>
+  </div>
+
   <%= link_to 'Add A Cohort', new_course_cohort_path(@course) %>
+  <% end %>
 </div>

@@ -1,12 +1,12 @@
 class CoursesController < ApplicationController
   before_action :find_course, only: %i[show edit update destroy]
   def index
-    @page_title = 'All Courses | PS 113 Admin Panel'
+    @page_title = 'All Courses | PS 118 Admin Panel'
     @courses = Course.where(user_id: current_user.id)
   end
 
   def show
-    @page_title = "#{@course.name} | PS 113 Admin Panel"
+    @page_title = "#{@course.name} | PS 118 Admin Panel"
   end
 
   def new
@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    p "Terminating #{course.name} from PS 113 Admin Panel"
+    p "Terminating #{course.name} from PS 118 Admin Panel"
     course.destroy
     respond_to do |format|
       format.js

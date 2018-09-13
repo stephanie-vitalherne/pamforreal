@@ -1,0 +1,21 @@
+<%= form_for([@course, @student]) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h4>
+      <ul>
+        <% @student.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= f.text_field :first_name, placeholder: 'First Name' %> <br>
+  <%= f.text_field :last_name, placeholder: 'Last Name' %> <br>
+  <%= f.select :education, ['High School', 'College', 'Masters', 'PhD'], { prompt: 'Select Education' } %> <br>
+  <%= f.date_select :birthday, :order => [:month, :day, :year], start_year: (Time.now.year - 150), end_year: (Time.now.year - 14), required: true %><br>
+  <%= f.collection_select :instructor, @instructor, :full_name, :full_name, { prompt: 'Select Instructor' } %> <br>
+
+  <%= f.submit %>
+<% end %>
