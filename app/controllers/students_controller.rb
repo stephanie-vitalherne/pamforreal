@@ -13,12 +13,11 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.course_id = @course.id
-    @student.cohort_id = @cohort.id
-    @student.generate_student_id
+    @student.generate_school_id
     @student.address = Faker::Address.full_address
     if @student.save
       flash[:notice] = 'Student created successfully.'
-      redirect_to course_path(@course)
+      redirect_to course_path(@course.id)
     else
       p @student.errors.full_messages
       render 'new'
@@ -27,6 +26,7 @@ class StudentsController < ApplicationController
 
   def edit
     @page_title = "Editing #{@student.full_name} | PS 118 Admin Panel"
+    @cohort = Cohort.all
   end
 
   def update
@@ -43,7 +43,7 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :education, :birthday)
+    params.require(:student).permit(:first_name, :last_name, :education, :birthday, :cohort_id)
   end
 
   def find_course

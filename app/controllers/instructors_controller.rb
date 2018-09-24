@@ -6,6 +6,7 @@ class InstructorsController < ApplicationController
 
   def show
     @page_title = "#{@instructor.full_name} | PS 118 Admin Panel"
+    @course = Course.all
   end
 
   def new

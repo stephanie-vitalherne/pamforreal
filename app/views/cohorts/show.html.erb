@@ -23,26 +23,39 @@
   <%= link_to 'Add A Student', new_course_student_path(@course) %>
 
   <h4>Current Students Enrolled</h4>
-    <p>Enrolled: <%= @course.students.count %></p>
+    <p>Enrolled: <%= @cohort.students.count %></p>
+
+    <% if @cohort.students.count == 0 %>
+    <% else %>
   <table>
     <thead>
       <th>Name</th>
       <th>School ID</th>
       <th>Education</th>
       <th>Birthday</th>
-      <% if current_user.is_admin? %>
+        <% if current_user.is_admin? %>
       <th>Actions</th>
-      <% else %>
-      <th>Action</th>
-      <% end %>
+        <% else %>
+        <% end %>
     </thead>
     <tbody>
-      <% @course.students.each do |c| %>
+      <% @cohort.students.each do |c| %>
       <tr>
         <td><%= c.full_name %></td>
+        <td><%= c.school_id %></td>
+        <td><%= c.education %></td>
+        <td><%= c.birthday.strftime("%b. %e, %Y") %></td>
+          <% if current_user.is_admin? %>
+        <td>
+          <%= link_to 'Edit', '#' %>
+          <%= link_to 'Delete', '#' %>
+          <% else %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <% end %>
   <% end %>
 </div>

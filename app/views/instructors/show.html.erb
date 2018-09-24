@@ -21,6 +21,7 @@
 
   <% if current_user.is_admin? %>
     <%= link_to 'Edit Instructor', edit_instructor_path %>
+    <%= link_to 'Delete Instructor', '#' %>
   <% else %>
   <% end %>
 <% end %>

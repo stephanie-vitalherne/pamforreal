@@ -1,3 +1,40 @@
 <div class="pages-home">
   <h1>PS 118 Admin Panel</h1>
+  <% if logged_in? %>
+    <div class="big-click">
+      <div class="column" id='point'>
+        <div class="inner-col">
+          <%= link_to students_path do %><img src="student.png" class='link-img'><% end %>
+      </div>
+      <div>
+        <%= link_to students_path do %>
+        <h3>STUDENTS</h3>
+      <% end %>
+    </div>
+  </div>
+  <div class="triangle">
+    <div class="column">
+      <div class="inner-col">
+        <%= link_to instructors_path do %><img src="teacher.png" class='teach-link-img'><% end %>
+    </div>
+    <div>
+      <%= link_to instructors_path do %>
+      <h3>INSTRUCTORS</h3>
+    <% end %>
+  </div>
+</div>
+<div class="column">
+  <div class="inner-col">
+    <%= link_to courses_path do %><img src="student.png" class='link-img'><% end %>
+</div>
+<div>
+  <%= link_to courses_path do %>
+  <h3>COURSES</h3>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+<%else%>
+<%end%>
 </div>

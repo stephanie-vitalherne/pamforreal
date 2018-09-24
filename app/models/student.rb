@@ -1,6 +1,5 @@
 class Student < ApplicationRecord
   belongs_to :cohort
-  belongs_to :course
   scope :newest_first, -> { order('created_at DESC') }
   validates :first_name, :last_name, :education, :birthday, presence: true
 
@@ -8,7 +7,7 @@ class Student < ApplicationRecord
     first_name + ' ' + last_name
   end
 
-  def generate_student_id
-    self.student_id = SecureRandom.hex(4).upcase
+  def generate_school_id
+    self.school_id = SecureRandom.hex(4).upcase
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   get '/register' => 'instructors#new'
+  get '/students' => 'students#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

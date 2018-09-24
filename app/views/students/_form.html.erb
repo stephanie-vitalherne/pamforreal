@@ -15,7 +15,7 @@
   <%= f.text_field :last_name, placeholder: 'Last Name' %> <br>
   <%= f.select :education, ['High School', 'College', 'Masters', 'PhD'], { prompt: 'Select Education' } %> <br>
   <%= f.date_select :birthday, :order => [:month, :day, :year], start_year: (Time.now.year - 150), end_year: (Time.now.year - 14), required: true %><br>
-  <%= f.collection_select :instructor, @instructor, :full_name, :full_name, { prompt: 'Select Instructor' } %> <br>
+  <%= f.collection_select :cohort_id, @course.cohorts, :id, :name, { prompt: "#{@course.name}'s Cohorts" } %> <br>
 
   <%= f.submit %>
 <% end %>
